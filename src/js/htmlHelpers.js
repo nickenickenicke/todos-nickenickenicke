@@ -77,6 +77,9 @@ export const listLoop = (tasks) => {
             createListHtml();
         })
     });
+    //Save lists to local storage
+    localStorage.setItem("tasksActive", JSON.stringify(tasksActive));
+    localStorage.setItem("tasksInactive", JSON.stringify(tasksInactive));
 };
 
 export const createListHtml = () => {
