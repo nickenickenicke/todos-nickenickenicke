@@ -60,5 +60,13 @@ addEventListener("submit", (e) => {
 });
 
 
+const inputWrapper = document.getElementById("inputwrapper");
+const toggleInputButton = document.getElementById("toggleinput");
+toggleInputButton.addEventListener ("click", () => {
+    inputWrapper.classList.toggle("visibility--off");
+    inputWrapper.classList.toggle("visibility--on");
+});
+
+
 /* ============| Generate HTML |============ */
 createListHtml();

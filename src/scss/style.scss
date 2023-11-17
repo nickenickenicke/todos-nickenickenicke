@@ -1,15 +1,19 @@
 @use './mixins' as m;
 @use './variables' as v;
 
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=IBM+Plex+Sans&display=swap');
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'IBM Plex Sans', sans-serif;
+    line-height: 1.2;
 }
 
 body {
-    background-color: cadetblue;
+    background-color: v.$bg-color;
+
     @include m.for-size(tablet){
         background-color: aliceblue;
     };
@@ -17,3 +21,121 @@ body {
         background-color: bisque;
     }
 }
+
+#app {
+    margin: 0 auto;
+    max-width: 1500px;
+    min-height: 110vh;
+
+    display: flex;
+    flex-direction: column;
+    overflow-y: hidden;
+
+    @include m.for-size(tablet) {
+        flex-direction: row-reverse;
+    }
+}
+
+h3 {
+    font-family: 'IBM Plex Mono', monospace;
+    text-transform: uppercase;
+    font-size: 1.7rem;
+}
+
+#inputwrapper {
+    background-color: white;
+    padding: v.$margin-s;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    transition: transform 1s;
+    @include m.for-size(tablet) {
+        position:initial;
+        height: 400px;
+        flex-grow: 1;
+        transform: translateX(0);
+    }
+}
+
+.visibility {
+    &--on {
+    transform: translateY(0);
+    @include m.for-size(tablet) {
+        transform: 0;
+        }
+    }
+    &--off {
+    transform: translateY(100%);
+    @include m.for-size(tablet) {
+        transform: 0;
+        }
+    }
+}
+
+
+#listwrapper {
+    background-color: v.$primary-color;
+}
+
+#inactivelistwrapper {
+    background-color: v.$secondary-color;
+}
+
+#toggleinput {
+    position: fixed;
+    width: 275px;
+    height: 75px;
+    top: -74px;
+    right: 0;
+    z-index: 290;
+    background-color: white;
+    border: 0;
+    font-size: 1.5rem;
+    @include m.for-size(tablet) {
+        visibility:hidden;
+    }
+}
+
+
+form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: v.$margin-s;
+
+    label {
+        margin-top: v.$margin-m;
+        font-family: 'IBM Plex Mono', monospace;
+        font-size: 1.2rem;
+    }
+    
+    
+    textarea, input {
+        resize: none;
+        border: v.$border-default;
+        background-color: white;
+        letter-spacing: 0.5px;
+        font-size: 1rem;
+    }
+
+    input {
+        height: 2rem;
+    }
+    textarea {
+        height: 5lh;
+    }
+
+    button {
+        background-color: black;
+        color: white;
+        border: none;
+    }
+}
+
+ button {
+    font-family: 'IBM Plex Mono', monospace;
+    text-transform: uppercase;
+    font-size: 1rem;
+    cursor: pointer;
+    padding: v.$margin-s;
+ }

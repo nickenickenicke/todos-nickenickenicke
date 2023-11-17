@@ -8,16 +8,18 @@
   </head>
   <body>
     <div id="app">
-      <section id="inputwrapper">
+      <section id="inputwrapper" class="visibility--off">
+        <button id="toggleinput" data-toggled="true">↑ LÄGG TILL ↑</button>
+        <h3>Lägg till uppgift</h3>
         <form id="newtaskform"></form>
       </section>
       <section id="listwrapper">
         <article id="activelistwrapper" class="listcontainer">
-          <h3>Active</h3>
+          <h3>Aktiva uppgifter</h3>
           <ul id="activelist"></ul>
         </article>
         <article id="inactivelistwrapper" class="listcontainer">
-          <h3>Inactive</h3>
+          <h3>Avklarade uppgifter</h3>
           <ul id="inactivelist"></ul>
         </article>
       </section>
