@@ -1,7 +1,9 @@
 export class Task {
+    isActive;
     title;
     description;
-    constructor(title, description) {
+    constructor(isActive, title, description) {
+        this.isActive = isActive;
         this.title = title;
         this.description = description;
 
