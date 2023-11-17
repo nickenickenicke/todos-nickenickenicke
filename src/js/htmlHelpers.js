@@ -6,11 +6,9 @@ export const listLoop = (tasks) => {
     if (tasks == tasksInactive) {
      list = listInactive;
     }
-    
+    //Reset html
     list.innerHTML = "";
-    
-    console.log(tasks);
-
+    //Create each list element
     tasks.forEach ((task, i) => {
         const listItem = document.createElement("li");
         const listTitle = document.createElement("h4");
@@ -36,7 +34,7 @@ export const listLoop = (tasks) => {
             tasks.splice(i, 1);
             tasksActive.push(task);
             }
-
+            
             createListHtml();
         });
     });
