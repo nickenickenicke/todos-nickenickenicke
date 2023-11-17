@@ -5,26 +5,21 @@ import { createListHtml } from "./htmlHelpers";
 export const listActive = document.getElementById("activelist");
 export const listInactive = document.getElementById("inactivelist");
 
-/* ===| List creation |=== */
-//Check if it is the first visit
-const firstVisit = localStorage.getItem("firstVisit") || true;
 
+/* ============| List creation |============ */
 //Import lists saved in local storage
 let lsTasksActive = JSON.parse(localStorage.getItem("tasksActive")) || [];
 let lsTasksInactive = JSON.parse(localStorage.getItem("tasksInactive")) || [];
 
-//List items for first timers
-const task1 = new Task(true, "Krydda köttbullen", "Med ketchup");
-const task2 = new Task(true, "Samla pengar till tårta", "Inte princesstårta");
-const task3 = new Task(true, "Gör hot shots", "Koka kaffe, vispa grädde!");
-const task4 = new Task(false, "Åk pendeltåg", "Jag är en loser baby");
-const task5 = new Task(false, "En utan description");
-//Create dummy list for first timers
-if (firstVisit == true){
+//Create dummy lists if local storage is empty
+if (lsTasksActive.length == 0 && lsTasksInactive.length == 0){
+    const task1 = new Task(true, "Krydda köttbullen", "Med ketchup");
+    const task2 = new Task(true, "Samla pengar till tårta", "Inte princesstårta");
+    const task3 = new Task(true, "Gör hot shots", "Koka kaffe, vispa grädde!");
+    const task4 = new Task(false, "Åk pendeltåg", "Jag är en loser baby");
+    const task5 = new Task(false, "En utan description");
     lsTasksActive = [task1, task2, task3];
     lsTasksInactive = [task4, task5];
-    //Set first visit to false in local storage
-    localStorage.setItem("firstVisit", "false");
 };
 
 //Create the actual lists
@@ -64,5 +59,5 @@ addEventListener("submit", (e) => {
 });
 
 
-/* ===| Generate HTML |=== */
+/* ============| Generate HTML |============ */
 createListHtml();

@@ -1,5 +1,7 @@
 import { listActive, listInactive, tasksActive, tasksInactive } from "./main";
 
+
+/* ============| List generator |============ */
 export const listLoop = (tasks) => {
     //Checks if loop is handling active or inactive tasks and selects correct list-element
     let list = listActive;
@@ -77,14 +79,16 @@ export const listLoop = (tasks) => {
             createListHtml();
         })
     });
-    //Save lists to local storage
-    localStorage.setItem("tasksActive", JSON.stringify(tasksActive));
-    localStorage.setItem("tasksInactive", JSON.stringify(tasksInactive));
 };
 
+
+/* ============| HTML creator |============ */
 export const createListHtml = () => {
     listLoop(tasksActive);
     listLoop(tasksInactive);
+    //Save lists to local storage
+    localStorage.setItem("tasksActive", JSON.stringify(tasksActive));
+    localStorage.setItem("tasksInactive", JSON.stringify(tasksInactive));
 };
 
 
