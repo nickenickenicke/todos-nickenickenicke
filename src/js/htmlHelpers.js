@@ -1,14 +1,17 @@
+import { listActive, listInactive, tasksActive, tasksInactive } from "./main";
+
 export const listLoop = (tasks) => {
-    let list = document.getElementById("activelist");
-
-    console.log(tasks);
-    
     //Checks if loop is handling active or inactive tasks and selects correct list-element
-    if (tasks[0].isActive === false) {
-        list = document.getElementById("inactivelist");
+    let list = listActive;
+    if (tasks == tasksInactive) {
+     list = listInactive;
     }
+    
+    list.innerHTML = "";
+    
+    console.log(tasks);
 
-    tasks.forEach ((task) => {
+    tasks.forEach ((task, i) => {
         const listItem = document.createElement("li");
         const listTitle = document.createElement("h4");
         const listDescription = document.createElement("span");
@@ -19,10 +22,27 @@ export const listLoop = (tasks) => {
         listItem.appendChild(listTitle);
         listItem.appendChild(listDescription);
         list.appendChild(listItem);
+
+        //Functionality to remove item from list, insert into opposite list and regenerate html
+        listItem.addEventListener("click", () => {
+            task.isActive = !task.isActive;
+
+            if (tasks == tasksActive){
+            tasks.splice(i, 1);
+            tasksInactive.push(task);
+            }
+
+            if (tasks == tasksInactive){
+            tasks.splice(i, 1);
+            tasksActive.push(task);
+            }
+
+            createListHtml();
+        });
     });
 };
 
-export const createListHtml = (tasksActive, tasksInactive) => {
+export const createListHtml = () => {
     listLoop(tasksActive);
     listLoop(tasksInactive);
 };
