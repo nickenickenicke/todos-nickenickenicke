@@ -1,0 +1,19 @@
+@use './mixins' as m;
+@use './variables' as v;
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: cadetblue;
+    @include m.for-size(tablet){
+        background-color: aliceblue;
+    };
+    @include m.for-size(desktop){
+        background-color: bisque;
+    }
+}

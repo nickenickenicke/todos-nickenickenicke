@@ -18,8 +18,9 @@ if (lsTasksActive.length == 0 && lsTasksInactive.length == 0){
     const task3 = new Task(true, "Gör hot shots", "Koka kaffe, vispa grädde!");
     const task4 = new Task(false, "Åk pendeltåg", "Jag är en loser baby");
     const task5 = new Task(false, "En utan description");
+    const task6 = new Task(false, "Måla hela världen", "Lilla mamma");
     lsTasksActive = [task1, task2, task3];
-    lsTasksInactive = [task4, task5];
+    lsTasksInactive = [task4, task5, task6];
 };
 
 //Create the actual lists
