@@ -4,10 +4,13 @@ $tablet: 768px;
 $desktop: 1200px;
 
 /* Colors */
-$bg-color: #0057ba;
-$primary-color: #b8b8ff;
-$secondary-color: #9c52f2;
-$tertiary-color: #5c7287;
+$color-white: #ffffff;
+$color-black: #000000;
+
+$color-bg: #0057ba;
+$color-primary: #b8b8ff;
+$color-secondary: #9c52f2;
+$color-tertiary: #5c7287;
 
 /* Margins */
 $margin-l: 1.5rem;
@@ -16,7 +19,7 @@ $margin-s: 0.5rem;
 $margin-xs: 0.2rem;
 
 /* Borders */
-$border-default: 2px solid black;
+$border-default: 2px solid $color-black;
 
 /* Font sizes */
 $font-xl: 1.7rem;
