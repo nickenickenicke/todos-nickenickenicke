@@ -14,9 +14,13 @@ export const listLoop = (tasks) => {
     tasks.forEach ((task, i) => {
         //Create elements
         const listItem = document.createElement("li");
+        listItem.className = "list-item";
         const listTitle = document.createElement("h4");
         const listDescription = document.createElement("span");
+        const btnWrapper = document.createElement("div");
+        btnWrapper.className = "list-item-buttons";
         const btnChange = document.createElement("button");
+        btnChange.className = "list-confirm-btn";
         const btnMoveUp = document.createElement("button");
         const btnMoveDown = document.createElement("button");
         
@@ -39,12 +43,13 @@ export const listLoop = (tasks) => {
         //Place elements
         listItem.appendChild(listTitle);
         listItem.appendChild(listDescription);
+        listItem.appendChild(btnWrapper);
         //Don't add redundant sorting buttons to first and last item
         if (i > 0) {
-            listItem.appendChild(btnMoveUp);
+            btnWrapper.appendChild(btnMoveUp);
         };
         if (i < tasks.length-1) {
-            listItem.appendChild(btnMoveDown);
+            btnWrapper.appendChild(btnMoveDown);
         };
         listItem.appendChild(btnChange);
         list.appendChild(listItem);
