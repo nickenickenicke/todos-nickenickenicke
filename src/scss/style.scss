@@ -1,7 +1,7 @@
 @use './mixins' as m;
 @use './variables' as v;
 
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=IBM+Plex+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap');
 
 * {
     margin: 0;
@@ -39,7 +39,9 @@ body {
 h3 {
     font-family: 'IBM Plex Mono', monospace;
     text-transform: uppercase;
-    font-size: 1.7rem;
+    font-weight: 600;
+    font-size: v.$font-l;
+    letter-spacing: 0.02rem;
 }
 
 #inputwrapper {
@@ -48,10 +50,12 @@ h3 {
     width: 100%;
     position: fixed;
     bottom: 0;
-    transition: transform 1s;
+    transition: transform 600ms ease-in-out;
     @include m.for-size(tablet) {
-        position:initial;
+        position:relative;
+        top: 50px;
         height: 400px;
+        max-width: 500px;
         flex-grow: 1;
         transform: translateX(0);
     }
@@ -74,23 +78,32 @@ h3 {
 
 
 #listwrapper {
-    background-color: v.$primary-color;
+    padding: v.$margin-s;
 }
 
 #inactivelistwrapper {
-    background-color: v.$secondary-color;
+    padding-bottom: 80px;
+}
+
+.listcontainer {
 }
 
 #toggleinput {
+    height: 65px;
+    padding: v.$margin-m;
+
     position: fixed;
-    width: 275px;
-    height: 75px;
-    top: -74px;
-    right: 0;
-    z-index: 290;
+    top: -64px;
+    right: 1.5rem;
+    z-index: 5;
+
     background-color: white;
     border: 0;
-    font-size: 1.5rem;
+
+    font-size: v.$font-l;
+    letter-spacing: 0.02rem;
+    font-weight: 400;
+
     @include m.for-size(tablet) {
         visibility:hidden;
     }
@@ -126,9 +139,12 @@ form {
     }
 
     button {
+        margin-top: v.$margin-m;
         background-color: black;
         color: white;
+        height: 65px;
         border: none;
+        font-size: v.$font-l;
     }
 }
 
@@ -138,4 +154,9 @@ form {
     font-size: 1rem;
     cursor: pointer;
     padding: v.$margin-s;
+ }
+
+ li {
+    margin-top: 0.4rem;
+    background-color: v.$primary-color;
  }
