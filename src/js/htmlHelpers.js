@@ -37,7 +37,7 @@ export const listLoop = (tasks) => {
         btnMoveUp.innerText = "↑";
         btnMoveDown.type = "button";
         btnMoveDown.innerText = "↓";
-        listTitle.innerText = task.title;
+        listTitle.innerText = i+1 + ". "+ task.title;
         listDescription.innerText = task.description;
 
         //Place elements
