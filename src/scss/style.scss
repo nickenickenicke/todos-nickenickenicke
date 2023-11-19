@@ -238,7 +238,7 @@ form {
     }
 
     span {
-        padding: v.$margin-xs v.$margin-s;
+        padding: v.$margin-xs v.$margin-s v.$margin-s;
         font-size: v.$font-s;
 
         @include m.for-size(tablet) {
