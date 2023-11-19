@@ -44,7 +44,7 @@ export const listLoop = (tasks) => {
         listItem.appendChild(listTitle);
         listItem.appendChild(listDescription);
         listItem.appendChild(btnWrapper);
-        //Don't add redundant sorting buttons to first and last item
+        //Don't add redundant sorting buttons to first or last item
         if (i > 0) {
             btnWrapper.appendChild(btnMoveUp);
         };
