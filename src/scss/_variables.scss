@@ -5,12 +5,19 @@ $desktop: 1200px;
 
 /* Colors */
 $color-white: #ffffff;
+$color-gray: #888888;
 $color-black: #000000;
 
-$color-bg: #0057ba;
-$color-primary: #b8b8ff;
+$color-bg: #0056b9;
+// $color-bg: #0057ba;
+// $color-primary: #b8b8ff;
+$color-primary: rgb(197, 218, 255);
 $color-secondary: #9c52f2;
-$color-tertiary: #5c7287;
+$color-tertiary-bright: #ffe375;
+$color-tertiary: #ffcc00;
+$color-tertiary-dark: #ffaa00;
+$color-tertiary-darker: #b37800;
+// $color-tertiary: #5c7287;
 
 /* Margins */
 $margin-l: 1.5rem;
@@ -22,8 +29,10 @@ $margin-xs: 0.2rem;
 $border-default: 2px solid $color-black;
 
 /* Font sizes */
+$font-xxl: 1.9rem;
 $font-xl: 1.7rem;
 $font-l: 1.5rem;
 $font-m: 1.3rem;
 $font-s: 1.1rem;
+$font-xs: 0.9rem;
 

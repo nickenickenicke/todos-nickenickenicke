@@ -9,6 +9,10 @@
     box-sizing: border-box;
     font-family: 'IBM Plex Sans', sans-serif;
     line-height: 1.2;
+
+    &::selection {
+        background-color: v.$color-tertiary;
+    }
 }
 
 body {
@@ -29,12 +33,34 @@ body {
     }
 }
 
-h3 {
+.header {
     font-family: 'IBM Plex Mono', monospace;
     text-transform: uppercase;
     font-weight: 600;
-    font-size: v.$font-xl;
     letter-spacing: 0.02rem;
+
+    &-list {
+        margin-top: v.$margin-m;
+        font-size: v.$font-xxl;
+        display: inline-block;
+
+        z-index: -1;
+        position: relative;
+    
+        &::before {
+            z-index: -2;
+            content: "";
+            position: absolute;
+            top: -5%;
+            left: -5%;
+            height: 105%;
+            width: 120%;
+            background-color: v.$color-tertiary-bright;
+        }
+    }
+    &-form {
+        font-size: v.$font-xl;
+    }
 }
 
 #inputwrapper {
@@ -43,11 +69,12 @@ h3 {
     width: 100%;
     position: fixed;
     bottom: 0;
+    z-index: 10;
     transition: transform 600ms ease-in-out;
 
     @include m.for-size(tablet) {
         position:relative;
-        top: 60px;
+        top: 50px;
         height: 400px;
         min-width: 33vw;
         transform: translateX(0);
@@ -79,7 +106,7 @@ h3 {
     position: fixed;
     top: -64px;
     right: 1.5rem;
-    z-index: 5;
+    z-index: 11;
 
     background-color: v.$color-white;
     border: 0;
@@ -104,13 +131,12 @@ h3 {
 }
 
 #inactivelistwrapper {
+    margin-top: v.$margin-l;
     padding-bottom: 80px;
 }
 
 .listcontainer {
 }
-
-
 
 form {
     width: 100%;
@@ -124,7 +150,6 @@ form {
         font-size: 1.2rem;
     }
     
-    
     textarea, input {
         resize: none;
         border: v.$border-default;
@@ -136,6 +161,7 @@ form {
     input {
         height: 2rem;
     }
+
     textarea {
         height: 5lh;
     }
@@ -147,15 +173,26 @@ form {
         height: 65px;
         border: none;
         font-size: v.$font-xl;
+
+
+        &:hover {
+            border: v.$border-default;
+            color: v.$color-black;
+            background-color: v.$color-gray;
+        }
+
+        &:active {
+            background-color: v.$color-white;
+            color: v.$color-black;
+        }
     }
 }
 
  button {
     font-family: 'IBM Plex Mono', monospace;
     text-transform: uppercase;
-    font-size: 1rem;
+    font-size: v.$font-xs;
     cursor: pointer;
-    padding: v.$margin-s;
  }
 
  .list {
@@ -188,10 +225,12 @@ form {
     }
     
     h4 {
-        padding-left: v.$margin-s;
-        padding-top: v.$margin-xs;
-        color: v.$color-white;
+        padding: v.$margin-s;
+        padding-bottom: 0;
+        overflow: hidden;
+        color: v.$color-black;
         font-size: v.$font-m;
+        letter-spacing: 0.03rem;
 
         @include m.for-size(tablet) {
             grid-column: 1 / 3;
@@ -199,8 +238,8 @@ form {
     }
 
     span {
-        padding: v.$margin-xs 0;
-        padding-left: v.$margin-s;
+        padding: v.$margin-xs v.$margin-s;
+        font-size: v.$font-s;
 
         @include m.for-size(tablet) {
             grid-column: 1 / 3;
@@ -228,6 +267,15 @@ form {
             border: none;
             border-left: v.$border-default;
             border-bottom: v.$border-default;
+            background-color: v.$color-tertiary-bright;
+
+            &:hover {
+                background-color: v.$color-tertiary;
+            }
+
+            &:active {
+                background-color: v.$color-tertiary-dark;
+            }
 
         @include m.for-size(tablet){
             height: 100%;
@@ -252,6 +300,15 @@ form {
         grid-row: 1 / 3;
         grid-column: 3 / 4;
         border: v.$border-default;
+        background-color: v.$color-tertiary;
+
+        &:hover {
+            background-color: v.$color-tertiary-dark;
+        }
+
+        &:active {
+            background-color: v.$color-tertiary-darker;
+        }
 
         @include m.for-size(tablet){
         grid-row: 3 / 4;
