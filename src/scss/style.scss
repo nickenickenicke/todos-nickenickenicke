@@ -133,6 +133,9 @@ body {
 #inactivelistwrapper {
     margin-top: v.$margin-l;
     padding-bottom: 80px;
+    .list-item {
+        background-color: v.$color-secondary;
+    }
 }
 
 .listcontainer {
