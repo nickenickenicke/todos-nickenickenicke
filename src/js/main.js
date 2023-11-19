@@ -33,7 +33,8 @@ export const tasksActive = lsTasksActive;
 export const tasksInactive = lsTasksInactive;
 
 
-/* ===| Add new task form |=== */
+/* ============| Create new task form |============ */
+// Hej Sebastian, den här HTML:en generar jag i js mest för att träna egentligen.
 const form = document.getElementById("newtaskform");
 const formTitle = document.createElement("input");
 formTitle.required = true;
@@ -65,11 +66,21 @@ addEventListener("submit", (e) => {
 });
 
 
+/* ============| Show / hide form button for mobile |============ */
 const inputWrapper = document.getElementById("inputwrapper");
 const toggleInputButton = document.getElementById("toggleinput");
+let toggleInputButtonToggled = false;
 toggleInputButton.addEventListener ("click", () => {
     inputWrapper.classList.toggle("visibility--off");
     inputWrapper.classList.toggle("visibility--on");
+    toggleInputButtonToggled = !toggleInputButtonToggled;
+    //Change button text depending on toggle state
+    if (toggleInputButtonToggled) {
+        toggleInputButton.innerText = "↓ STÄNG ↓";
+    } 
+    if (!toggleInputButtonToggled) {
+        toggleInputButton.innerText = "↑ LÄGG TILL ↑";
+    }
 });
 
 
