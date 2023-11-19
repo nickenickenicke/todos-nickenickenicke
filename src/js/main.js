@@ -13,14 +13,19 @@ let lsTasksInactive = JSON.parse(localStorage.getItem("tasksInactive")) || [];
 
 //Create dummy lists if local storage is empty
 if (lsTasksActive.length == 0 && lsTasksInactive.length == 0){
-    const task1 = new Task(true, "Krydda köttbullen", "Med ketchup");
-    const task2 = new Task(true, "Samla pengar till tårta", "Inte princesstårta");
-    const task3 = new Task(true, "Gör hot shots", "Koka kaffe, vispa grädde!");
-    const task4 = new Task(false, "Åk pendeltåg", "Jag är en loser baby");
-    const task5 = new Task(false, "En utan description");
-    const task6 = new Task(false, "Måla hela världen", "Lilla mamma");
-    lsTasksActive = [task1, task2, task3];
-    lsTasksInactive = [task4, task5, task6];
+    const task1 = new Task(true, "Åk pendeltåg", "Jag är en loser baby!");
+    const task2 = new Task(true, "Gör hot shots", "Koka kaffe, vispa grädde!");
+    const task3 = new Task(true, "Skicka meddelande", "Kolla om mamma och pappa har det kul på restaurangen.");
+    const task4 = new Task(true, "Krydda köttbullen", "Med ketchup.");
+    const task5 = new Task(true, "En utan description");
+    const task6 = new Task(true, "Här är en uppgift med en riktigt lång titel", "Men det ska nog gå bra trots att även beskrivningen är superlång och garanterat kommer leda till flera rader text som måste presenteras på ett fint sätt i DOM:en. Oj oj oj jag är lite nervös nu. Den här kommer garanterat tvinga lite extra radbrythingar. Undrar om det ser bra ut.");
+    const task7 = new Task(true, "Måla hela världen", "Lilla mamma.");
+    const task8 = new Task(false, "Boka resa", "ARN → CPH.");
+    const task9 = new Task(false, "Köp blommor", "OBS inte liljor.");
+    const task10 = new Task(false, "Samla pengar till tårta", "Inte princesstårta.");
+    const task11 = new Task(false, "Kom på fler uppgifter", "Så man kan se hur en lista med många punkter ser ut.");
+    lsTasksActive = [task1, task2, task3, task4, task5, task6, task7];
+    lsTasksInactive = [task8, task9, task10, task11];
 };
 
 //Create the actual lists
