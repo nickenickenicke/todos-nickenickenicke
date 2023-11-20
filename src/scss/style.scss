@@ -19,6 +19,13 @@ body {
     background-color: v.$color-bg;
 }
 
+button {
+    font-family: 'IBM Plex Mono', monospace;
+    text-transform: uppercase;
+    font-size: v.$font-s;
+    cursor: pointer;
+ }
+
 #app {
     margin: 0 auto;
     max-width: 1500px; //For large screens
@@ -30,36 +37,6 @@ body {
 
     @include m.for-size(tablet) {
         flex-direction: row-reverse;
-    }
-}
-
-.header {
-    font-family: 'IBM Plex Mono', monospace;
-    text-transform: uppercase;
-    font-weight: 600;
-    letter-spacing: 0.02rem;
-
-    &-list {
-        margin-top: v.$margin-m;
-        font-size: v.$font-xxl;
-        display: inline-block;
-
-        z-index: -1;
-        position: relative;
-    
-        &::before {
-            z-index: -2;
-            content: "";
-            position: absolute;
-            top: -5%;
-            left: -5%;
-            height: 105%;
-            width: 120%;
-            background-color: v.$color-tertiary-bright;
-        }
-    }
-    &-form {
-        font-size: v.$font-xl;
     }
 }
 
@@ -81,6 +58,55 @@ body {
     }
     @include m.for-size(desktop){
         min-width: 24vw;
+    }
+
+    form {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: v.$margin-s;
+    
+        label {
+            margin-top: v.$margin-m;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 1.2rem;
+        }
+        
+        textarea, input {
+            resize: none;
+            border: v.$border-default;
+            background-color: v.$color-white;
+            letter-spacing: 0.5px;
+            font-size: 1rem;
+        }
+    
+        input {
+            height: 2rem;
+        }
+    
+        textarea {
+            height: 5lh;
+        }
+    
+        button {
+            margin-top: v.$margin-m;
+            background-color: v.$color-black;
+            color: v.$color-white;
+            height: 65px;
+            border: none;
+            font-size: v.$font-xl;
+    
+            &:hover {
+                border: v.$border-default;
+                color: v.$color-black;
+                background-color: v.$color-gray;
+            }
+    
+            &:active {
+                background-color: v.$color-white;
+                color: v.$color-black;
+            }
+        }
     }
 }
 
@@ -138,71 +164,43 @@ body {
     }
 }
 
-.listcontainer {
-}
-
-form {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: v.$margin-s;
-
-    label {
-        margin-top: v.$margin-m;
-        font-family: 'IBM Plex Mono', monospace;
-        font-size: 1.2rem;
-    }
-    
-    textarea, input {
-        resize: none;
-        border: v.$border-default;
-        background-color: v.$color-white;
-        letter-spacing: 0.5px;
-        font-size: 1rem;
-    }
-
-    input {
-        height: 2rem;
-    }
-
-    textarea {
-        height: 5lh;
-    }
-
-    button {
-        margin-top: v.$margin-m;
-        background-color: v.$color-black;
-        color: v.$color-white;
-        height: 65px;
-        border: none;
-        font-size: v.$font-xl;
-
-
-        &:hover {
-            border: v.$border-default;
-            color: v.$color-black;
-            background-color: v.$color-gray;
-        }
-
-        &:active {
-            background-color: v.$color-white;
-            color: v.$color-black;
-        }
-    }
-}
-
- button {
+.header {
     font-family: 'IBM Plex Mono', monospace;
     text-transform: uppercase;
-    font-size: v.$font-xs;
-    cursor: pointer;
- }
+    font-weight: 600;
+    letter-spacing: 0.02rem;
 
- .list {
+    &-list {
+        margin-top: v.$margin-m;
+        font-size: v.$font-xxl;
+        display: inline-block;
+
+        z-index: -1;
+        position: relative;
+    
+        &::before {
+            z-index: -2;
+            content: "";
+            position: absolute;
+            top: -5%;
+            left: -5%;
+            height: 105%;
+            width: 120%;
+            background-color: v.$color-tertiary-bright;
+        }
+    }
+    
+    &-form {
+        font-size: v.$font-xl;
+    }
+}
+
+.list {
     display: grid;
     grid-template-columns: repeat(1, 1fr);
     grid-template-rows:  auto;
     gap: v.$margin-s;
+    list-style-type: none;
     
     @include m.for-size(tablet) {
         grid-template-columns: repeat(2, 1fr);
@@ -210,7 +208,7 @@ form {
     @include m.for-size(desktop) {
         grid-template-columns: repeat(3, 1fr);
     }
- }
+}
 
 .list-item {
     min-height: 100px;
@@ -232,7 +230,7 @@ form {
         padding-bottom: 0;
         overflow: hidden;
         color: v.$color-black;
-        font-size: v.$font-m;
+        font-size: v.$font-l;
         letter-spacing: 0.03rem;
 
         @include m.for-size(tablet) {
@@ -242,14 +240,14 @@ form {
 
     span {
         padding: v.$margin-xs v.$margin-s v.$margin-s;
-        font-size: v.$font-s;
+        font-size: v.$font-m;
 
         @include m.for-size(tablet) {
             grid-column: 1 / 3;
         }
     }
     
-    &-buttons{
+    &-buttons {
         grid-row: 1 / 3;
         grid-column: 2 / 3;
         
@@ -272,6 +270,10 @@ form {
             border-bottom: v.$border-default;
             background-color: v.$color-tertiary-bright;
 
+            &:first-of-type {
+                border-top: v.$border-default;
+            }
+
             &:hover {
                 background-color: v.$color-tertiary;
             }
@@ -280,17 +282,15 @@ form {
                 background-color: v.$color-tertiary-dark;
             }
 
-        @include m.for-size(tablet){
-            height: 100%;
-            width: 50%;
-            border-top: v.$border-default;
-        }
-
-            &:first-of-type {
+            @include m.for-size(tablet){
+                height: 100%;
+                width: 50%;
                 border-top: v.$border-default;
             }
         }
     }
+
+    //Fixes the placement of the single arrow button in the first list item
     &:first-of-type {
         .list-item-buttons {
             flex-direction: column-reverse;
@@ -299,6 +299,7 @@ form {
             }
         }
     }
+
     .list-confirm-btn {
         grid-row: 1 / 3;
         grid-column: 3 / 4;
