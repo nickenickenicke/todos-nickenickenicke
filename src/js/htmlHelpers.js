@@ -16,7 +16,7 @@ export const listLoop = (tasks) => {
         const listItem = document.createElement("li");
         listItem.className = "list-item";
         const listTitle = document.createElement("h4");
-        const listDescription = document.createElement("span");
+        const listDescription = document.createElement("p");
         const btnWrapper = document.createElement("div");
         btnWrapper.className = "list-item-buttons";
         const btnChange = document.createElement("button");
