@@ -38,11 +38,15 @@ export const tasksInactive = lsTasksInactive;
 const form = document.getElementById("newtaskform");
 const formTitle = document.createElement("input");
 formTitle.required = true;
+formTitle.id = "formheader";
 const formTitleLabel = document.createElement("label");
 formTitleLabel.innerText = "Rubrik";
+formTitleLabel.setAttribute("for", "formheader");
 const formDesc = document.createElement("textarea");
+formDesc.id = "formdescription";
 const formDescLabel = document.createElement("label");
 formDescLabel.innerText = "Beskrivning"
+formDescLabel.setAttribute("for", "formdescription");
 const formSubmit = document.createElement("button");
 formSubmit.innerText = "Lägg till";
 
