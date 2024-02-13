@@ -1,0 +1,326 @@
+@use "./mixins" as m;
+@use "./variables" as v;
+
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "IBM Plex Sans", sans-serif;
+  line-height: 1.2;
+
+  &::selection {
+    background-color: v.$color-tertiary;
+  }
+}
+
+body {
+  background-color: v.$color-bg;
+}
+
+button {
+  font-family: "IBM Plex Mono", monospace;
+  text-transform: uppercase;
+  font-size: v.$font-s;
+  cursor: pointer;
+}
+
+#app {
+  margin: 0 auto;
+  max-width: 1500px; //For large screens
+  min-height: 110vh; //Just to get it scrolling
+
+  display: flex;
+  flex-direction: column;
+  overflow-y: hidden;
+
+  @include m.for-size(tablet) {
+    flex-direction: row-reverse;
+  }
+}
+
+#inputwrapper {
+  background-color: v.$color-white;
+  padding: v.$margin-s;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  z-index: 10;
+  transition: transform 600ms ease-in-out;
+
+  @include m.for-size(tablet) {
+    position: relative;
+    top: 50px;
+    height: 400px;
+    min-width: 33vw;
+    transform: translateX(0);
+  }
+  @include m.for-size(desktop) {
+    min-width: 24vw;
+  }
+
+  form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: v.$margin-s;
+
+    label {
+      margin-top: v.$margin-m;
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 1.2rem;
+    }
+
+    textarea,
+    input {
+      resize: none;
+      border: v.$border-default;
+      background-color: v.$color-white;
+      letter-spacing: 0.5px;
+      font-size: 1rem;
+    }
+
+    input {
+      height: 2rem;
+    }
+
+    textarea {
+      height: 5lh;
+    }
+
+    button {
+      margin-top: v.$margin-m;
+      background-color: v.$color-black;
+      color: v.$color-white;
+      height: 65px;
+      border: none;
+      font-size: v.$font-xl;
+
+      &:hover {
+        border: v.$border-default;
+        color: v.$color-black;
+        background-color: v.$color-gray;
+      }
+
+      &:active {
+        background-color: v.$color-white;
+        color: v.$color-black;
+      }
+    }
+  }
+}
+
+.visibility {
+  &--on {
+    transform: translateY(0);
+    @include m.for-size(tablet) {
+      transform: 0;
+    }
+  }
+  &--off {
+    transform: translateY(100%);
+    @include m.for-size(tablet) {
+      transform: 0;
+    }
+  }
+}
+
+#toggleinput {
+  height: 65px;
+  padding: v.$margin-m;
+
+  position: fixed;
+  top: -64px;
+  right: 1.5rem;
+  z-index: 11;
+
+  background-color: v.$color-white;
+  color: v.$color-black;
+  border: 0;
+
+  font-size: v.$font-xl;
+  letter-spacing: 0.02rem;
+  font-weight: 400;
+
+  @include m.for-size(tablet) {
+    visibility: hidden;
+  }
+}
+
+#listwrapper {
+  padding: v.$margin-s;
+  @include m.for-size(tablet) {
+    min-width: 66vw;
+  }
+  @include m.for-size(desktop) {
+    min-width: 74vw;
+  }
+}
+
+#inactivelistwrapper {
+  margin-top: v.$margin-l;
+  padding-bottom: 80px;
+  .list-item {
+    background-color: v.$color-secondary;
+  }
+}
+
+.header {
+  font-family: "IBM Plex Mono", monospace;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 0.02rem;
+
+  &-list {
+    margin-top: v.$margin-m;
+    font-size: v.$font-xxl;
+    display: inline-block;
+
+    z-index: -1;
+    position: relative;
+
+    &::before {
+      z-index: -2;
+      content: "";
+      position: absolute;
+      top: -5%;
+      left: -5%;
+      height: 105%;
+      width: 120%;
+      background-color: v.$color-tertiary-bright;
+    }
+  }
+
+  &-form {
+    font-size: v.$font-xl;
+  }
+}
+
+.list {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-template-rows: auto;
+  gap: v.$margin-s;
+  list-style-type: none;
+
+  @include m.for-size(tablet) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @include m.for-size(desktop) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.list-item {
+  min-height: 100px;
+  display: grid;
+  grid-template-columns: auto 50px 100px;
+  grid-template-rows: auto 2fr;
+  margin-top: 0.4rem;
+  background-color: v.$color-primary;
+
+  @include m.for-size(tablet) {
+    min-height: 200px;
+
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: auto 1fr 50px;
+  }
+
+  h4 {
+    padding: v.$margin-s;
+    padding-bottom: 0;
+    overflow: hidden;
+    color: v.$color-black;
+    font-size: v.$font-l;
+    letter-spacing: 0.03rem;
+
+    @include m.for-size(tablet) {
+      grid-column: 1 / 3;
+    }
+  }
+
+  p {
+    padding: v.$margin-xs v.$margin-s v.$margin-s;
+    font-size: v.$font-m;
+
+    @include m.for-size(tablet) {
+      grid-column: 1 / 3;
+    }
+  }
+
+  &-buttons {
+    grid-row: 1 / 3;
+    grid-column: 2 / 3;
+
+    display: flex;
+    flex-direction: column;
+
+    @include m.for-size(tablet) {
+      grid-row: 3 / 4;
+      grid-column: 1 / 2;
+
+      flex-direction: row;
+      justify-content: end;
+    }
+
+    button {
+      height: 50%;
+      width: 100%;
+      border: none;
+      border-left: v.$border-default;
+      border-bottom: v.$border-default;
+      background-color: v.$color-tertiary-bright;
+      color: v.$color-black;
+
+      &:first-of-type {
+        border-top: v.$border-default;
+      }
+
+      &:hover {
+        background-color: v.$color-tertiary;
+      }
+
+      &:active {
+        background-color: v.$color-tertiary-dark;
+      }
+
+      @include m.for-size(tablet) {
+        height: 100%;
+        width: 50%;
+        border-top: v.$border-default;
+      }
+    }
+  }
+
+  //Fixes the placement of the single arrow button in the first list item
+  &:first-of-type {
+    .list-item-buttons {
+      flex-direction: column-reverse;
+      @include m.for-size(tablet) {
+        flex-direction: row;
+      }
+    }
+  }
+
+  .list-confirm-btn {
+    grid-row: 1 / 3;
+    grid-column: 3 / 4;
+    border: v.$border-default;
+    background-color: v.$color-tertiary;
+    color: v.$color-black;
+
+    &:hover {
+      background-color: v.$color-tertiary-dark;
+    }
+
+    &:active {
+      background-color: v.$color-tertiary-darker;
+    }
+
+    @include m.for-size(tablet) {
+      grid-row: 3 / 4;
+      grid-column: 2 / 3;
+    }
+  }
+}

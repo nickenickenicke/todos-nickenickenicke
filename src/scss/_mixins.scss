@@ -1,0 +1,14 @@
+@use './variables' as v;
+
+@mixin for-size($size) {
+    @if $size == tablet {
+        @media screen and (min-width: v.$tablet) {
+            @content
+        }
+    };
+    @if $size == desktop {
+        @media screen and (min-width: v.$desktop) {
+            @content
+        }
+    };
+};
